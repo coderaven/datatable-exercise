@@ -1,0 +1,76 @@
+<nav class="navbar navbar-default">
+  <div class="navbar-left">
+    <h1 class="navbar-brand"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Object Changes Record Log</h1>
+  </div>
+
+  <div class="navbar-form navbar-right" role="search">
+    <div class="spinner pull-left">
+      <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+      </div>
+    </div>
+    
+
+    <div class="form-group navbar-brand">
+      <%= form_tag import_path, id: "import-records", multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Import Records", class: "btn btn-default"%>
+      <% end %>
+    </div>
+  </div>
+</nav>
+
+<% if notice %>
+  <%= raw "<p id='notice' class='alert #{alert}' role='alert'>#{notice}</p>" %>
+<% end %>
+
+
+
+<table id="objects-record" class="table table-striped table-condensed table-hover table-bordered" data-source="<%= object_records_index_url(format: "json") %>">
+  <thead>
+    <tr>
+      <th>Object ID</th>
+      <th>Object Type</th>
+      <th>Timestamp</th>
+      <th>Object Changes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  </tbody>
+</table>
+
+<br>
+
+<nav class="navbar navbar-default">
+  <h1 class="navbar-brand"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Object Record Time-Based Inspector</h1>
+</nav>
+
+<div class="form-group">
+    <%= form_tag(search_path,  remote: true, id: "search-object", class: "form-inline") do %>
+      <%= label_tag(:object_id, "Object ID:")  %>
+      <%= text_field_tag(:object_id) %>
+      <%= label_tag(:object_type, "Object Type:")  %>
+      <%= text_field_tag(:object_type) %>
+      <%= label_tag(:timestamp, "Datetime or Unix Timestamp:")  %>
+      <%= text_field_tag(:timestamp) %>
+      
+      <div class='input-group date inline' id='datetimepicker1'>
+        <input type='hidden' class="form-control" />
+          <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+      </div>
+                
+
+      <%= submit_tag("Inspect", class: "btn btn-default", id: "inspect-button") %>
+    <% end %>
+</div>
+
+<br>
+<br>

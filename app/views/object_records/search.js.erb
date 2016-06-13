@@ -1,0 +1,4 @@
+$("#search-result").remove();
+$("#inspect-button").prop('disabled', true);
+$("#search-object").after('<%= j render("search_result") %>');
+$("#inspect-button").prop('disabled', false);
