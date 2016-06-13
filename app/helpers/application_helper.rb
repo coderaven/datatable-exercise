@@ -20,4 +20,8 @@ module ApplicationHelper
 	    end
 	    pretty.strip.gsub(/,$/,"")
   	end
+
+  	def pretty_date_format(timestamp)
+  		"#{timestamp.strftime("%Y-%m-%d %H:%M:%S %Z")} (#{timestamp.to_i})"
+  	end
 end

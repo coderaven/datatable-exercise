@@ -32,7 +32,7 @@ class ObjectRecordsController < ApplicationController
 
       begin
         timestamp_formatted = Time.at(Integer(params[:timestamp])).to_i
-      rescue
+      rescue StandardError
         timestamp_formatted = Chronic.parse(params[:timestamp].strip).to_i
       end
 

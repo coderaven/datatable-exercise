@@ -16,7 +16,7 @@
 		  <% if @object_record %>
 	      <td><%= @object_record.object_id %></td>
 	      <td><%= @object_record.object_type %></td>
-	      <td><%= @object_record.timestamp %></td>
+	      <td><%= pretty_date_format(@object_record.timestamp) %></td>
 	      <td><%= @merged_properties %></td>
 	      <% else %>
 	      <td>No Data Available<td>

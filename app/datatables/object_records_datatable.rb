@@ -22,7 +22,7 @@ private
       [
         object_record.object_id,
         object_record.object_type,
-        "#{object_record.timestamp.strftime("%Y-%m-%d %H:%M:%S %Z")} (#{object_record.timestamp.to_i})",
+        pretty_date_format(object_record.timestamp),
         pretty_format_changes(object_record.object_changes)
       ]
     end
@@ -40,15 +40,14 @@ private
 
       begin
         timestamp_formatted = Time.at(Integer(search_value)).to_i
-      rescue
+      rescue StandardError
         timestamp_formatted = Chronic.parse(search_value).to_i
       end
 
       object_records = object_records.any_of( {object_id: search_value},{object_type: /#{Regexp.escape(search_value)}/}, {timestamp: timestamp_formatted}, { :"object_changes.#{search_value}".exists => true }  )
     end
-    object_records = object_records.paginate( per_page: per_page, page: page)
     
-    object_records
+    object_records = object_records.paginate( per_page: per_page, page: page)
   end
 
   def page

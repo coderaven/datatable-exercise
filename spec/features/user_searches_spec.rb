@@ -10,7 +10,7 @@ feature 'User searches on table' do
     input_a_search '1'
 
     expect(page).to have_css(".sorting_1", :text => "1")
-    #save_and_open_screenshot
+    # save_and_open_screenshot
   end
 
   scenario 'with an object type', js: true do

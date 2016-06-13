@@ -18,7 +18,7 @@ class ObjectRecord
 
       SmarterCSV.process(f, options) do |array|
       array.first[:object_changes] = ApplicationController.helpers.generate_hash(array.first[:object_changes])
-        ObjectRecord.create( array.first )
+          ObjectRecord.create( array.first )
       end
 
     rescue StandardError
