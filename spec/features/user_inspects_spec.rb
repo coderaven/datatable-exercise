@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'User inspects' do
   before :each do
     ObjectRecord.import(test_csv_file)
+    visit object_records_index_path    
   end
 
   context 'with a missing field' do

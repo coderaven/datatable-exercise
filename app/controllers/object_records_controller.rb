@@ -18,6 +18,13 @@ class ObjectRecordsController < ApplicationController
     end
   end
 
+  def delete_all
+    ObjectRecord.delete_all # Unsafe but only here for exercise testing convenience
+    respond_to do |format|
+      format.html { redirect_to root_url, notice: "All Records successfully deleted", alert: "alert-warning" }
+    end
+  end
+
   def search
     if params[:object_id] && params[:object_type] && params[:timestamp]
       object_id = params[:object_id].strip

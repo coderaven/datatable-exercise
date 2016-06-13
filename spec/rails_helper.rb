@@ -67,12 +67,10 @@ def test_csv_file(error: false)
 end
 
 def input_a_search(search_word)
-  visit object_records_index_path
   find('input[type=search]').set(search_word)
 end
 
 def input_an_inspect(object_id: "1", object_type: "ObjectA", timestamp: "412351252")
-  visit object_records_index_path
   find('#object_id').set(object_id)
   find('#object_type').set(object_type)
   find('#timestamp').set(timestamp)

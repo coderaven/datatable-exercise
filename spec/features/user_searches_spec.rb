@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'User searches on table' do
   before :each do
     ObjectRecord.import(test_csv_file)
+    visit object_records_index_path
   end
 
   scenario 'with an object id', js: true do

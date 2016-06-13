@@ -20,7 +20,13 @@
         <%= submit_tag "Import Records", class: "btn btn-default"%>
       <% end %>
     </div>
+
+    <div id="delete-records" class="pull-right navbar-brand">
+    <%= button_to "Delete All Records", object_records_delete_all_path, method: "get", onclick: "return confirm('Are you sure?')", class: "btn btn-danger" %>
+    </div>
   </div>
+
+  
 </nav>
 
 <% if notice %>

@@ -3,6 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.ui-toolbar {
+  color: #fff !important;
+  select {
+    color: #000 !important;
+  }
+}
+
+input {
+  color: #000 !important;
+}
+
+#objects-record_processing {
+  color: #0a93c6 !important;
+}
+
+#delete-records input{
+  color: #fff !important;
+}
+
 .sk-folding-cube {
   margin: 20px auto;
   width: 40px;
