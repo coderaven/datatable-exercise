@@ -37,14 +37,9 @@ private
 
     if params[:search]['value'].present?
       search_value = params[:search]['value'].strip
+      timestamp_formatted = timestamp_formatter(search_value)
 
-      begin
-        timestamp_formatted = Time.at(Integer(search_value)).to_i
-      rescue StandardError
-        timestamp_formatted = Chronic.parse(search_value).to_i
-      end
-
-      object_records.any_of( {object_id: search_value},{object_type: /#{Regexp.escape(search_value)}/}, {timestamp: timestamp_formatted}, { :"object_changes.#{search_value}".exists => true }  )
+      object_records = object_records.any_of( {object_id: search_value},{object_type: /#{Regexp.escape(search_value)}/}, {timestamp: timestamp_formatted}, { :"object_changes.#{search_value}".exists => true }  )
     end
     
     object_records.paginate( per_page: per_page, page: page)
@@ -59,7 +54,8 @@ private
   end
 
   def sort_column
-    %w[object_id object_type timestamp object_changes][params[:order]["0"]["column"].to_i]
+    columns = %w[object_id object_type timestamp object_changes]
+    columns[params[:order]["0"]["column"].to_i]
   end
 
   def sort_direction

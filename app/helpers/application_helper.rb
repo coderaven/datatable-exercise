@@ -24,4 +24,12 @@ module ApplicationHelper
   	def pretty_date_format(timestamp)
   		"#{timestamp.strftime("%Y-%m-%d %H:%M:%S %Z")} (#{timestamp.to_i})"
   	end
+
+  	def timestamp_formatter(time_string)
+		begin
+			Time.at(Integer(time_string)).to_i
+		rescue StandardError
+			Chronic.parse(time_string.strip).to_i
+		end
+  	end
 end

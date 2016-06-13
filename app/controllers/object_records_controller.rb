@@ -24,12 +24,8 @@ class ObjectRecordsController < ApplicationController
   end
 
   def search
-    if params[:object_id] && params[:object_type] && params[:timestamp]
-      begin
-        timestamp_formatted = Time.at(Integer(params[:timestamp])).to_i
-      rescue StandardError
-        timestamp_formatted = Chronic.parse(params[:timestamp].strip).to_i
-      end
+    unless params.values_at(:object_id, :object_type, :timestamp).include?(nil)
+      timestamp_formatted = timestamp_formatter(params[:timestamp])
 
       query_result = ObjectRecord.search(params[:object_id].strip, params[:object_type].strip, timestamp_formatted)
       @merged_properties = ObjectRecord.merged_properties(query_result) if (@object_record = query_result.first)
