@@ -37,7 +37,7 @@ feature 'User inspects' do
 
       expect(page).to have_selector("#objects-record td", :text => "1")
       expect(page).to have_selector("#objects-record td", :text => "ObjectA")
-      expect(page).to have_selector("#objects-record td", :text => "1983-01-25T14:00:52+00:00")
+      expect(page).to have_selector("#objects-record td", :text => "1983-01-25 14:00:52 +00:00 (412351252)")
       expect(page).to have_selector("#objects-record td", :text => 'property1: ""value1"", property3: ""value2""')
     end
 
@@ -46,7 +46,7 @@ feature 'User inspects' do
 
       expect(page).to have_selector("#objects-record td", :text => "1")
       expect(page).to have_selector("#objects-record td", :text => "ObjectA")
-      expect(page).to have_selector("#objects-record td", :text => "1984-10-27T22:56:05+00:00")
+      expect(page).to have_selector("#objects-record td", :text => "1984-10-27 22:56:05 +00:00 (467765765)")
       expect(page).to have_selector("#objects-record td", :text => 'property1: ""altered value1"", property3: ""value2"", property2: ""random value2""')
     end
   end
