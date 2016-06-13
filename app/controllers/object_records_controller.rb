@@ -31,15 +31,8 @@ class ObjectRecordsController < ApplicationController
         timestamp_formatted = Chronic.parse(params[:timestamp].strip).to_i
       end
 
-      query_result = 
-        ObjectRecord.where(object_id: params[:object_id]
-          .strip, object_type: params[:object_type].strip)
-          .lte(timestamp: timestamp_formatted)
-          .order_by(timestamp: "desc")
-
-      if (@object_record = query_result.first)
-        @merged_properties = pretty_format_changes(query_result.reverse.to_a.map(&:object_changes).inject(&:merge))
-      end
+      query_result = ObjectRecord.search(params[:object_id].strip, params[:object_type].strip, timestamp_formatted)
+      @merged_properties = ObjectRecord.merged_properties(query_result) if (@object_record = query_result.first)
     else
       @object_record = nil
     end 

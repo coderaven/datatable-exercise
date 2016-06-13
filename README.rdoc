@@ -2,6 +2,8 @@
 
 {<img src="https://codeship.com/projects/79a077b0-13a6-0134-a614-3ee796d0dbce/status?branch=master" alt="Status?branch=master" />}[https://codeship.com/projects/157574]
 
+{Heroku Deployed: Live Demo}[https://tradegecko-exercise.herokuapp.com/]
+
 == Description
 
 We have a CSV (Comma Separated Values) file of N-rows for the following Objects:

@@ -8,6 +8,12 @@ class ObjectRecord
   field :object_type, type: String
   field :timestamp, type: DateTime
   field :object_changes, type: Hash
+  
+  scope :search, -> (objectid, object_type, timestamp) { where(object_id: objectid, object_type: object_type).lte(timestamp: timestamp).order_by(timestamp: "desc") }
+
+  def self.merged_properties(records_set)
+    ApplicationController.helpers.pretty_format_changes(records_set.reverse.to_a.map(&:object_changes).inject(&:merge))
+  end
 
   def self.import(file)
     result = true
