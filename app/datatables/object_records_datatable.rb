@@ -44,10 +44,10 @@ private
         timestamp_formatted = Chronic.parse(search_value).to_i
       end
 
-      object_records = object_records.any_of( {object_id: search_value},{object_type: /#{Regexp.escape(search_value)}/}, {timestamp: timestamp_formatted}, { :"object_changes.#{search_value}".exists => true }  )
+      object_records.any_of( {object_id: search_value},{object_type: /#{Regexp.escape(search_value)}/}, {timestamp: timestamp_formatted}, { :"object_changes.#{search_value}".exists => true }  )
     end
     
-    object_records = object_records.paginate( per_page: per_page, page: page)
+    object_records.paginate( per_page: per_page, page: page)
   end
 
   def page
@@ -59,8 +59,7 @@ private
   end
 
   def sort_column
-    columns = %w[object_id object_type timestamp object_changes]
-    columns[params[:order]["0"]["column"].to_i]
+    %w[object_id object_type timestamp object_changes][params[:order]["0"]["column"].to_i]
   end
 
   def sort_direction
