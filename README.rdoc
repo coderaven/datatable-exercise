@@ -9,13 +9,13 @@ ObjectB: {property1, property2, property3}
 ..
 ...
 
-object_id | object_type | timestamp | object_changes
-:-------: | :---------: | :--------: | :------------
- 1        |  ObjectA    |  412351252 | {property1: "value1", property3: "value2"}
- 1        |  ObjectB    |  456662343 | {property1: “another value1"}
- 1        |  ObjectA    |  467765765 | {property1: "altered value1", property2: “random value2"}
- 2        |  ObjectA    |  451232123 | {property2: “some value2"}
-...       |  ...        |  ...       | ...
+	object_id | object_type | timestamp | object_changes
+	:-------: | :---------: | :--------: | :------------
+	 1        |  ObjectA    |  412351252 | {property1: "value1", property3: "value2"}
+	 1        |  ObjectB    |  456662343 | {property1: “another value1"}
+	 1        |  ObjectA    |  467765765 | {property1: "altered value1", property2: “random value2"}
+	 2        |  ObjectA    |  451232123 | {property2: “some value2"}
+	...       |  ...        |  ...       | ...
 
 
 The CSV columns are:
@@ -42,12 +42,12 @@ For simplicity, assume a moderate number of classes/type (no more than 3) and mo
 * Configuration
 Mongoid configuration can be done through a mongoid.yml that specifies your options and clients. The simplest configuration is as follows, which sets the default client to “localhost:27017” and provides a single database in that client named “mongoid”.
 
-development:
-  clients:
-    default:
-      database: mongoid
-      hosts:
-        - localhost:27017
+	development:
+	  clients:
+	    default:
+	      database: mongoid
+	      hosts:
+	        - localhost:27017
 
 Rails Applications
 
@@ -84,19 +84,19 @@ Note that the deployed environment I am using is Heroku's free-tier which only h
 
 then on your mongoid.yml:
 
-production:
-  clients:
-    default:
-     # The standard MongoDB connection URI allows for easy
-     # replica set connection setup.
-     # Use environment variables or a config file to keep your
-     # credentials safe e.g. <%= ENV['MONGODB_URI'] %>.
-     uri: <%= ENV['MONGODB_URI'] %>
+	production:
+	  clients:
+	    default:
+	     # The standard MongoDB connection URI allows for easy
+	     # replica set connection setup.
+	     # Use environment variables or a config file to keep your
+	     # credentials safe e.g. <%= ENV['MONGODB_URI'] %>.
+	     uri: <%= ENV['MONGODB_URI'] %>
 
-     options:
-       # The default timeout is 5, which is the time in seconds
-       # for a connection to time out.
-       # We recommend 15 because it allows for plenty of time
-       # in most operating environments.
-       connect_timeout: 15
+	     options:
+	       # The default timeout is 5, which is the time in seconds
+	       # for a connection to time out.
+	       # We recommend 15 because it allows for plenty of time
+	       # in most operating environments.
+	       connect_timeout: 15
 
