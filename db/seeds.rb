@@ -49,7 +49,7 @@ p "Created #{ObjectRecord.count} default object records"
 
 
 
-100.times do |index|
+100.times do
   ObjectRecord.create!(object_id: rand(1..50),
                 object_type: "Object" + ["A","B","C"].sample,
                 timestamp: rand(Chronic.parse("2000-01-01 10:30:00")..Chronic.parse("2016-06-10 07:10:00")).to_i,
