@@ -36,8 +36,11 @@ ruby 2.3.1
 * System dependencies (For Tests and Database Drivers - Only tested and deveoped on Mac OSX)
 
   $ bundle install
+
   $ brew install mongodb
+
   $ brew services start mongodb
+  
   $ npm install phantomjs 
 
 * Configuration
