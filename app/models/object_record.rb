@@ -16,8 +16,6 @@ class ObjectRecord
   end
 
   def self.import(file)
-    result = true
-
     begin
       File.open(file.path, "rb:UTF-8") do |f|
         options = {row_sep: :auto, col_sep: ","}
@@ -27,10 +25,10 @@ class ObjectRecord
             ObjectRecord.create(array.first)
         end
       end
+      
+      true
     rescue StandardError
-      result = false
+      false
     end
-
-    result
   end
 end
