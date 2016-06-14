@@ -19,19 +19,17 @@ class ObjectRecord
     result = true
 
     begin
-      f = File.open(file.path, "rb:UTF-8")
-      options = {row_sep: :auto, col_sep: ","}
+      File.open(file.path, "rb:UTF-8") do |f|
+        options = {row_sep: :auto, col_sep: ","}
 
-      SmarterCSV.process(f, options) do |array|
-      array.first[:object_changes] = ApplicationController.helpers.generate_hash(array.first[:object_changes])
-          ObjectRecord.create(array.first)
+        SmarterCSV.process(f, options) do |array|
+        array.first[:object_changes] = ApplicationController.helpers.generate_hash(array.first[:object_changes])
+            ObjectRecord.create(array.first)
+        end
       end
-
     rescue StandardError
       result = false
     end
-
-    f.close if f
 
     result
   end

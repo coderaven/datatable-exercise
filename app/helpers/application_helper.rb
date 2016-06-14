@@ -6,7 +6,7 @@ module ApplicationHelper
 		hash = {}
 
 		array.each do |e|
-		  	key_value = e.split(key_sep)
+			key_value = e.split(key_sep)
 			hash[key_value[0].strip.gsub(/^{/,"")] = key_value[1].strip.gsub(/}$/,"")
 		end
 
@@ -25,7 +25,7 @@ module ApplicationHelper
   		"#{timestamp.strftime("%Y-%m-%d %H:%M:%S %Z")} (#{timestamp.to_i})"
   	end
 
-  	def timestamp_formatter(time_string)
+	def timestamp_formatter(time_string)
 		begin
 			Time.at(Integer(time_string)).to_i
 		rescue StandardError
