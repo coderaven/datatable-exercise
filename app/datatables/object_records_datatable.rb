@@ -39,7 +39,11 @@ private
       search_value = params[:search]['value'].strip
       timestamp_formatted = timestamp_formatter(search_value)
 
-      object_records = object_records.any_of( {object_id: search_value},{object_type: /#{Regexp.escape(search_value)}/}, {timestamp: timestamp_formatted}, { :"object_changes.#{search_value}".exists => true }  )
+      object_records = 
+        object_records.any_of( {object_id: search_value},
+          {object_type: /#{Regexp.escape(search_value)}/}, 
+          {timestamp: timestamp_formatted}, 
+          { :"object_changes.#{search_value}".exists => true }  )
     end
     
     object_records.paginate( per_page: per_page, page: page)
