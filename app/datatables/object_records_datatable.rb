@@ -54,8 +54,7 @@ private
   end
 
   def sort_column
-    columns = %w[object_id object_type timestamp object_changes]
-    columns[params[:order]["0"]["column"].to_i]
+    %w[object_id object_type timestamp object_changes][params[:order]["0"]["column"].to_i]
   end
 
   def sort_direction

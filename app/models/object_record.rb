@@ -18,7 +18,7 @@ class ObjectRecord
   def self.import(file)
     begin
       File.open(file.path, "rb:UTF-8") do |f|
-        options = {row_sep: :auto, col_sep: ","}
+        options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id,:object_type,:timestamp,:object_changes]}
 
         SmarterCSV.process(f, options) do |array|
         array.first[:object_changes] = ApplicationController.helpers.generate_hash(array.first[:object_changes])
