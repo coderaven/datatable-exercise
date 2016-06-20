@@ -1,4 +1,4 @@
 $("#search-result").remove();
 $("#inspect-button").prop('disabled', true);
-$("#search-object").after('<%= j render("search_result") %>');
+$("#search-object").after('<%= j render partial: "search_result", locals: { object_record: @object_record, merged_properties: @merged_properties } %>');
 $("#inspect-button").prop('disabled', false);
