@@ -16,24 +16,22 @@ class ObjectRecord
   end
 
   def self.import(file)
-    begin
-      File.open(file.path, "rb:UTF-8") do |f|
-        options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id], headers_in_file: false}
+    File.open(file.path, "rb:UTF-8") do |f|
+      options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id], headers_in_file: false}
 
-        headers_exist = false
-        SmarterCSV.process(f, options) { |header| headers_exist = true if header.first[:object_id].to_s.strip == "object_id"; break }
+      headers_exist = false
+      SmarterCSV.process(f, options) { |header| headers_exist = true if header.first[:object_id].to_s.strip == "object_id"; break }
 
-        options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id,:object_type,:timestamp,:object_changes], remove_empty_values: true, headers_in_file: headers_exist}
+      options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id,:object_type,:timestamp,:object_changes], remove_empty_values: true, headers_in_file: headers_exist}
 
-        SmarterCSV.process(f, options) do |array|
-            array.first[:object_changes] = ApplicationController.helpers.generate_hash(array.first[:object_changes])
-            ObjectRecord.create(array.first)
-        end
+      SmarterCSV.process(f, options) do |array|
+          array.first[:object_changes] = ApplicationController.helpers.generate_hash(array.first[:object_changes])
+          ObjectRecord.create(array.first)
       end
-      
-      true
-    rescue StandardError
-      false
     end
+    
+    true
+  rescue StandardError
+    false
   end
 end
