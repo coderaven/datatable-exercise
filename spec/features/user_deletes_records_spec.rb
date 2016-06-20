@@ -7,7 +7,7 @@ feature 'User deletes' do
 	end
 
 	scenario ': success', js: true do
-      click_button("Delete All Records")
+      click_button('Delete All Records')
       expect(page).to have_content('All Records successfully deleted')
     end
 end

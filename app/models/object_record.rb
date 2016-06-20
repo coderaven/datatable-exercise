@@ -2,7 +2,7 @@ class ObjectRecord
   include Mongoid::Document
 
   validates_presence_of :object_id, :object_type, :timestamp, :object_changes
-  validates_uniqueness_of :timestamp, :scope => [:object_id, :object_type]
+  validates_uniqueness_of :timestamp, scope: [:object_id, :object_type]
 
   field :object_id, type: Integer
   field :object_type, type: String
@@ -22,7 +22,7 @@ class ObjectRecord
       headers_exist = false
       SmarterCSV.process(f, options) { |header| headers_exist = true if header.first[:object_id].to_s.strip == "object_id"; break }
 
-      options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id,:object_type,:timestamp,:object_changes], remove_empty_values: true, headers_in_file: headers_exist}
+      options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id, :object_type, :timestamp, :object_changes], remove_empty_values: true, headers_in_file: headers_exist}
 
       SmarterCSV.process(f, options) do |array|
           array.first[:object_changes] = ApplicationController.helpers.generate_hash(array.first[:object_changes])

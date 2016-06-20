@@ -1,7 +1,7 @@
 module ApplicationHelper
 	def generate_hash(string)
-		arr_sep=','
-		key_sep=':'
+		arr_sep = ','
+		key_sep = ':'
 		array = string.split(arr_sep)
 		hash = {}
 

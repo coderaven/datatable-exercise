@@ -24,13 +24,13 @@ class ObjectRecordsController < ApplicationController
   end
 
   def search
-    unless params.values_at(:object_id, :object_type, :timestamp).include?(nil)
+    if params.values_at(:object_id, :object_type, :timestamp).include?(nil)
+      @object_record = nil
+    else
       timestamp_formatted = timestamp_formatter(params[:timestamp])
 
       query_result = ObjectRecord.search(params[:object_id].strip, params[:object_type].strip, timestamp_formatted)
       @merged_properties = ObjectRecord.merged_properties(query_result) if (@object_record = query_result.first)
-    else
-      @object_record = nil
     end 
 
     respond_to do |format|
