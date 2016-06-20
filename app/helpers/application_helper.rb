@@ -26,10 +26,8 @@ module ApplicationHelper
   	end
 
 	def timestamp_formatter(time_string)
-		begin
-			Time.at(Integer(time_string)).to_i
-		rescue StandardError
-			Chronic.parse(time_string.strip).to_i
-		end
+		Time.at(Integer(time_string)).to_i
+	rescue StandardError
+		Chronic.parse(time_string.strip).to_i
   	end
 end
