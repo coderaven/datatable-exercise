@@ -22,7 +22,7 @@ module ApplicationHelper
   	end
 
   	def pretty_date_format(timestamp)
-  		"#{timestamp.strftime("%Y-%m-%d %H:%M:%S %Z")} (#{timestamp.to_i})"
+  		"#{timestamp.strftime('%Y-%m-%d %H:%M:%S %Z')} (#{timestamp.to_i})"
   	end
 
 	def timestamp_formatter(time_string)
