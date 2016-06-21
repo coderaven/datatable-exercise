@@ -34,6 +34,7 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'smarter_csv'
 gem 'sidekiq'
+gem 'sinatra', :require => false
 
 
 group :development, :test do
@@ -47,6 +48,7 @@ group :development, :test do
   gem 'launchy' #save_and_open_screenshot
   gem 'nyan-cat-formatter'
   gem 'byebug'
+  gem 'rspec-sidekiq'
 end
 
 group :development do

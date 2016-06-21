@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'User deletes' do
 	before :each do
+	   Sidekiq::Testing.inline!
 	   ObjectRecord.import(test_csv_file)
 	   visit object_records_index_path    
 	end
