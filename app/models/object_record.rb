@@ -25,8 +25,7 @@ class ObjectRecord
       options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id, :object_type, :timestamp, :object_changes], remove_empty_values: true, headers_in_file: headers_exist}
 
       SmarterCSV.process(f, options) do |array|
-          array.first[:object_changes] = ApplicationController.helpers.generate_hash(array.first[:object_changes])
-          ObjectRecord.create(array.first)
+          ImportCsvJob.perform_later(array.first)
       end
     end
     
