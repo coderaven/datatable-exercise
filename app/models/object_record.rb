@@ -19,7 +19,7 @@ class ObjectRecord
     gdrive = GdriveFileHandler.new("#{Rails.root}/config/drive_config.json", file.path, "csv")
     gdrive.upload!
 
-    ImportCsvJob.perform_later(gdrive.uploaded_file_link)
+    ProcessCsvJob.perform_later(gdrive.uploaded_file_link)
 
     true
   rescue
