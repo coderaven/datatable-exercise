@@ -16,20 +16,21 @@ class ObjectRecord
   end
 
   def self.import(file)
-    gdrive = GdriveHandler.new("#{Rails.root}/config/drive_config.json")
+    gdrive = GdriveFileHandler.new("#{Rails.root}/config/drive_config.json", file.path, "csv")
+    gdrive.upload!
 
-    File.open(file.path, "rb:UTF-8") do |f|
-      options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id], headers_in_file: false}
+    # File.open(file.path, "rb:UTF-8") do |f|
+    #   options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id], headers_in_file: false}
 
-      headers_exist = false
-      SmarterCSV.process(f, options) { |header| headers_exist = true if header.first[:object_id].to_s.strip == "object_id"; break }
+    #   headers_exist = false
+    #   SmarterCSV.process(f, options) { |header| headers_exist = true if header.first[:object_id].to_s.strip == "object_id"; break }
 
-      options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id, :object_type, :timestamp, :object_changes], remove_empty_values: true, headers_in_file: headers_exist}
+    #   options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id, :object_type, :timestamp, :object_changes], remove_empty_values: true, headers_in_file: headers_exist}
 
-      SmarterCSV.process(f, options) do |array|
-          ImportCsvJob.perform_later(array.first)
-      end
-    end
+    #   SmarterCSV.process(f, options) do |array|
+    #       ImportCsvJob.perform_later(array.first)
+    #   end
+    # end
     
     true
   rescue StandardError
