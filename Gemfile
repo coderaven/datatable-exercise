@@ -36,6 +36,9 @@ gem 'smarter_csv'
 gem 'sidekiq'
 gem 'google_drive'
 
+gem 'sinatra', require: false
+gem 'slim'
+
 
 group :development, :test do
   gem 'rspec-rails'

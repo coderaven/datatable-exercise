@@ -2,7 +2,7 @@ require 'sidekiq/api'
 
 module ApplicationHelper
 	def queued_job_count
-		Sidekiq::Queue.new.size
+		Sidekiq::ProcessSet.new.first['busy']
 	end
 
 	def generate_hash(string)
