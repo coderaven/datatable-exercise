@@ -9,10 +9,12 @@
 {Heroku Staging (W/ background job): Live Demo}[https://pacific-bastion-80328.herokuapp.com/]
 
 == Heroku Staging : You are in Parallel Processing (Background Jobs) Branch
-Install redis and start in the terminal:
+To make it work locally, Install redis and start in the terminal:
   redis-server
 
   bundle exec sidekiq
+
+In the config/initializers/sidekiq.rb, change the url of redis accordingly.
 
 == Description
 

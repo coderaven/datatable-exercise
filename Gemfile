@@ -48,6 +48,9 @@ group :development, :test do
   gem 'launchy' #save_and_open_screenshot
   gem 'nyan-cat-formatter'
   gem 'byebug'
+end
+
+group :test do
   gem 'rspec-sidekiq'
 end
 
