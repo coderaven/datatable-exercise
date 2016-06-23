@@ -21,6 +21,9 @@ Also, config/drive_config.json is already provided - it is generated using Googl
 
 Google Drive is used as a substitute to S3 for having a place to store our upload files and thus reducing the amount of time for our application processing (and avoiding TimeOut error by Heroku) - The keys in drive_config.json will only be for testing convenience purposes and will be deactivated. It is suggested you follow the instructions on the link above to generate your own.
 
+== New Background Job Process:
+Upload -> Saved to GDrive (public folder) -> SideKiq queues a File Open to GDrive Path -> From File Open Parsing Sidekiq queues each processing of row of csv to ensure only valid data is recorded in the database.
+
 == Description
 
 We have a CSV (Comma Separated Values) file of N-rows for the following Objects:
