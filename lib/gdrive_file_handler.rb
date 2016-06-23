@@ -1,4 +1,5 @@
 require "google_drive"
+require 'open-uri'
 
 class GdriveFileHandler
 	attr_reader :uploaded_file_name, :drive_folder_title, :session, :gdrive_file
