@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class ProcessCsvJob < ActiveJob::Base
   queue_as :default
 
@@ -20,5 +22,5 @@ class ProcessCsvJob < ActiveJob::Base
 	    ImportCsvJob.perform_later(array.first)
 	end
   end
-  
+
 end

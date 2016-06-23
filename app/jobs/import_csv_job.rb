@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class ImportCsvJob < ActiveJob::Base
   queue_as :default
 
