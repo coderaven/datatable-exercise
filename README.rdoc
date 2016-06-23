@@ -4,9 +4,9 @@
 
 {<img src="https://api.codacy.com/project/badge/Grade/f2274423890542a08a09171256880c3f" alt="Codacy code quality" />}[https://www.codacy.com/app/raven_2/datatable-exercise?utm_source=github.com&utm_medium=referral&utm_content=coderaven/datatable-exercise&utm_campaign=Badge_Grade]
 
-{Heroku Deployed: Live Demo (No Background Jobs)}[https://tradegecko-exercise.herokuapp.com/]
+{Heroku Deployed: Live Demo (No Background Jobs - Simple and can easily track the app logic yet having some power constraints on Heroku Free Tier)}[https://tradegecko-exercise.herokuapp.com/]
 
-{Heroku Staging: Live Demo (With SideKiq or Parallel Jobs - Faster on Heroku)}[https://pacific-bastion-80328.herokuapp.com/]
+{Heroku Staging: Live Demo (With SideKiq or Parallel Jobs - Faster on Heroku and accepts larger file)}[https://pacific-bastion-80328.herokuapp.com/]
 
 == There's a Parallel Branch
 
