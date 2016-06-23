@@ -1,4 +1,10 @@
+require 'sidekiq/api'
+
 module ApplicationHelper
+	def queued_job_count
+		Sidekiq::Queue.new.size
+	end
+
 	def generate_hash(string)
 		arr_sep = ','
 		key_sep = ':'

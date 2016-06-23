@@ -33,7 +33,9 @@
   <%= raw "<p id='notice' class='alert #{alert}' role='alert'>#{notice}</p>" %>
 <% end %>
 
-
+<% if @still_have_jobs %>
+  <p id='notice' class='alert alert-warning' role='alert'>There are still records currently being imported in the database (refresh) . . .</p>
+<% end %>
 
 <table id="objects-record" class="table table-striped table-condensed table-hover table-bordered" data-source="<%= object_records_index_url(format: "json") %>">
   <thead>

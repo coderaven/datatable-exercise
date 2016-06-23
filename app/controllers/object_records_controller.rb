@@ -2,6 +2,8 @@ class ObjectRecordsController < ApplicationController
   include ApplicationHelper
 
   def index
+    @still_have_jobs = !queued_job_count.zero?
+
     respond_to do |format|
       format.html
       format.json { render json: ObjectRecordsDatatable.new(view_context) }
