@@ -16,6 +16,8 @@ class ObjectRecord
   end
 
   def self.import(file)
+    gdrive = GdriveHandler.new("#{Rails.root}/config/drive_config.json")
+
     File.open(file.path, "rb:UTF-8") do |f|
       options = {row_sep: :auto, col_sep: ",", user_provided_headers: [:object_id], headers_in_file: false}
 
