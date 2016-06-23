@@ -2,7 +2,7 @@ require 'sidekiq/api'
 
 module ApplicationHelper
 	def queued_job_count
-		Sidekiq::ProcessSet.new.nil? ? 0 : Sidekiq::ProcessSet.new.first['busy']
+		Sidekiq::ProcessSet.new.first.nil? ? 0 : Sidekiq::ProcessSet.new.first['busy']
 	end
 
 	def generate_hash(string)
