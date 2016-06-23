@@ -17,7 +17,7 @@ To make it work locally, Install redis and start in the terminal:
 In the config/initializers/sidekiq.rb, change the url of redis accordingly.
 Also, config/drive_config.json is already provided - it is generated using Google API and can be followed how to here:
 
-{Google Drive Ruby: Live Demo}[https://github.com/gimite/google-drive-ruby]
+{Google Drive Ruby Gem}[https://github.com/gimite/google-drive-ruby]
 
 Google Drive is used as a substitute to S3 for having a place to store our upload files and thus reducing the amount of time for our application processing (and avoiding TimeOut error by Heroku) - The keys in drive_config.json will only be for testing convenience purposes and will be deactivated. It is suggested you follow the instructions on the link above to generate your own.
 
