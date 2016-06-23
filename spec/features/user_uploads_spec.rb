@@ -9,7 +9,7 @@ feature 'User uploads file' do
     it 'should display success alert',js: true do
       attach_file("file",test_csv_file.path)
       click_button("Import Records")
-      expect(page).to have_content('Records imported successfully.')
+      expect(page).to have_content('Records imported successfully. (In Queued, Refresh Browser)')
     end
   end
 

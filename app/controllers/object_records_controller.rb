@@ -12,7 +12,7 @@ class ObjectRecordsController < ApplicationController
 
   def import
     if ObjectRecord.import(params[:file])
-      redirect_to root_url, notice: "Records imported successfully.", alert: "alert-success"
+      redirect_to root_url, notice: "Records imported successfully. (In Queued, Refresh Browser)", alert: "alert-success"
     else
       redirect_to root_url, notice: "Unable to import: Invalid CSV or File!", alert: "alert-danger"
     end
