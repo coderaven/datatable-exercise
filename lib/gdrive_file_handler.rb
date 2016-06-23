@@ -1,6 +1,8 @@
 require "google_drive"
 require 'open-uri'
 
+# This is to be refactored and is used only for convenience, especially for env
+
 class GdriveFileHandler
 	attr_reader :uploaded_file_name, :drive_folder_title, :session, :gdrive_file
 
