@@ -22,7 +22,7 @@ class ObjectRecord
     ProcessCsvJob.perform_later(gdrive.uploaded_file_link)
 
     true
-  rescue
+  rescue StandardError
     false
   end
 end
